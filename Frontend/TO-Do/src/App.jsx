@@ -1,10 +1,10 @@
 import React from "react";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { Routes, Route, Navigate } from "react-router-dom";
 import Login from "../pages/Login";
 import Register from "../pages/Register";
 import Dashboard from "../pages/Dashboard";
 import ProtectedRoute from "../components/ProtectedRoute";
-import { AuthProvider } from "../context/AuthContext";
+// import { AuthProvider } from "../context/AuthContext";
 
 function App() {
   return (
@@ -23,14 +23,10 @@ function App() {
             }
           />
           {/* Optional: redirect "/" to /dashboard if logged in */}
-          <Route
-            path="/"
-            element={
-              <ProtectedRoute>
-                <Dashboard />
-              </ProtectedRoute>
-            }
-          />
+         <Route path="/" element={<Navigate to="/dashboard" replace />} />
+
+          {/* Catch-all route to redirect to login if no match */}
+          <Route path="*" element={<Navigate to="/" replace />} />
         </Routes>
     //   </Router>
     // </AuthProvider>
