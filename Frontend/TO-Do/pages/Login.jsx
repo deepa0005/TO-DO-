@@ -10,18 +10,21 @@ const Login = () => {
   const { login, loading, user } = useAuth()
   const navigate = useNavigate()
 
-  useEffect(() => {
-    if (user) {
-      navigate("/dashboard")
-    }
-  }, [user, navigate])
+const handleSubmit = async (e) => {
+  e.preventDefault();
+  if (!email || !password) return;
 
-  const handleSubmit = async (e) => {
-    e.preventDefault()
-    if (!email || !password) return
-    const success = await login(email, password)
-    if (success) navigate("/dashboard")
+  const success = await login(email, password);
+
+  console.log("Login success:", success);
+  console.log("User after login:", user);
+
+  if (success) {
+    setTimeout(() => {
+      navigate("/dashboard");
+    }, 100);
   }
+};
 
   return (
     <div className="min-h-[calc(100vh-8rem)] flex items-center justify-center">
