@@ -11,7 +11,7 @@ const app = express();
 
 //  CORS
 app.use(cors({
-  origin: "https://to-do-list-sigma-seven-51.vercel.app",
+  origin: "https://to-do-list-93akagpmx-deepa0005s-projects.vercel.app",
   credentials: true,
 }));
 
