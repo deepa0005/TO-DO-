@@ -4,10 +4,15 @@ import toast from "react-hot-toast";
 import Sidebar from "../components/Sidebar";
 import TaskList from "../components/TaskList"; 
 const Dashboard = () => {
+   const { user, loading: authLoading } = useAuth(); 
   const [tasks, setTasks] = useState([]);
   const [loading, setLoading] = useState(true);
   const [activeTab, setActiveTab] = useState("my-day"); 
   const [filteredTasks, setFilteredTasks] = useState([]);
+
+  useEffect(() => {
+    if (user) fetchTasks();
+  }, [user]);
 
   useEffect(() => {
     fetchTasks();
@@ -17,6 +22,7 @@ const Dashboard = () => {
     filterTasksByTab();
   }, [tasks, activeTab]);
 
+  
   const fetchTasks = async () => {
     try {
       setLoading(true);
