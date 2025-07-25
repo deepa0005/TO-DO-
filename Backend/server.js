@@ -11,7 +11,7 @@ const app = express();
 
 //  CORS
 app.use(cors({
-  origin: "https://to-do-list-93akagpmx-deepa0005s-projects.vercel.app",
+  origin: "https://to-do-list-sigma-seven-51.vercel.app/",
   credentials: true,
 }));
 
@@ -28,6 +28,6 @@ app.get("/", (req, res) => {
   res.send("API is running...");
 });
 
-// ✅ Start server
+
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => console.log(`Server running on ${PORT}`));

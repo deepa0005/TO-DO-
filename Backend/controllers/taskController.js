@@ -11,11 +11,11 @@ exports.createTask = async (req, res) => {
   res.status(201).json(task);
 };
 
-//update task and marked as completed
+//update task and marked as completed 
 exports.updateTask = async (req, res) => {
   try {
     const task = await Task.findOne({ _id: req.params.id, user: req.user._id });
-    if (!task) return res.status(404).json({ message: "Task not found" });
+    if (!task) return res.status(404).json({ message: "Task not found add new task" });
 
   
     const { title, completed, important } = req.body;
@@ -32,7 +32,7 @@ exports.updateTask = async (req, res) => {
     const updatedTask = await task.save();
     res.json(updatedTask);
   } catch (err) {
-    console.error("Error updating task:", err);
+    console.error("Error updating task :", err);
     res.status(500).json({ message: "Server error" });
   }
 };
