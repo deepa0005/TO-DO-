@@ -9,7 +9,7 @@ DB();
 const app = express();
 
 app.use(cors({
-  origin: "http://localhost:5173",
+  origin: "to-do-list-sigma-seven-51.vercel.app",
   credentials: true,
 }));
 

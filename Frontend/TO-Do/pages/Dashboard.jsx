@@ -20,7 +20,7 @@ const Dashboard = () => {
   const fetchTasks = async () => {
     try {
       setLoading(true);
-      const response = await axios.get("http://localhost:5000/api/tasks");
+      const response = await axios.get("https://to-do-kkyx.onrender.com/api/tasks");
       setTasks(response.data);
     } catch (error) {
       toast.error("Failed to fetch tasks");

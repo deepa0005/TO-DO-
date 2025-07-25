@@ -24,7 +24,7 @@ useEffect(() => {
     if (token) {
       axios.defaults.headers.common["Authorization"] = `Bearer ${token}`;
       try {
-        const res = await axios.get("http://localhost:5000/api/auth/me"); // protected route
+        const res = await axios.get("https://to-do-kkyx.onrender.com/auth/me"); // protected route
         setUser(res.data); // actual verified user
       } catch (err) {
         console.error("Token invalid:", err.response?.data?.message || err.message);
@@ -42,7 +42,7 @@ useEffect(() => {
   const login = async (email, password) => {
     try {
       setLoading(true);
-      const response = await axios.post("http://localhost:5000/api/auth/login", {
+      const response = await axios.post("https://to-do-kkyx.onrender.com/api/auth/login", {
         email,
         password,
       });
@@ -68,7 +68,7 @@ useEffect(() => {
   const register = async (name, email, password) => {
     try {
       setLoading(true);
-      const response = await axios.post("http://localhost:5000/api/auth/register", {
+      const response = await axios.post("https://to-do-kkyx.onrender.com/api/auth/register", {
         name,
         email,
         password,

@@ -15,7 +15,7 @@ const TaskList = ({ tasks, setTasks }) => {
 
         try {
             setAddingTask(true);
-            const res = await axios.post("http://localhost:5000/api/tasks", {
+            const res = await axios.post("https://to-do-kkyx.onrender.com/api/tasks", {
                 title: newTaskTitle.trim(),
                 important: false, // default
             });
@@ -31,7 +31,7 @@ const TaskList = ({ tasks, setTasks }) => {
 
     const deleteTask = async (id) => {
         try {
-            await axios.delete(`http://localhost:5000/api/tasks/${id}`);
+            await axios.delete(`https://to-do-kkyx.onrender.com/api/tasks/${id}`);
             setTasks((prev) => prev.filter((t) => t._id !== id));
             toast.success("Deleted!");
         } catch {
@@ -41,7 +41,7 @@ const TaskList = ({ tasks, setTasks }) => {
 
     const toggleComplete = async (id, completed) => {
         try {
-            const res = await axios.put(`http://localhost:5000/api/tasks/${id}`, {
+            const res = await axios.put(`https://to-do-kkyx.onrender.com/api/tasks/${id}`, {
                 completed,
             });
             setTasks((prev) =>
@@ -54,7 +54,7 @@ const TaskList = ({ tasks, setTasks }) => {
 
     const toggleImportant = async (id, currentValue) => {
         try {
-            const res = await axios.put(`http://localhost:5000/api/tasks/${id}`, {
+            const res = await axios.put(`https://to-do-kkyx.onrender.com/api/tasks/${id}`, {
                 important: !currentValue,
             });
             setTasks((prev) =>
@@ -74,7 +74,7 @@ const TaskList = ({ tasks, setTasks }) => {
     const saveEdit = async (id) => {
         if (!editTitle.trim()) return toast.error("Empty title");
         try {
-            const res = await axios.put(`http://localhost:5000/api/tasks/${id}`, {
+            const res = await axios.put(`https://to-do-kkyx.onrender.com/api/tasks/${id}`, {
                 title: editTitle.trim(),
             });
             setTasks((prev) =>
