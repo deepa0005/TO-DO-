@@ -10,6 +10,12 @@ const Login = () => {
   const { login, loading, user } = useAuth()
   const navigate = useNavigate()
 
+
+    useEffect(() => {
+    if (user) {
+      navigate("/dashboard");
+    }
+  }, [user, navigate]);
 const handleSubmit = async (e) => {
   e.preventDefault();
   if (!email || !password) return;
@@ -19,11 +25,6 @@ const handleSubmit = async (e) => {
   console.log("Login success:", success);
   console.log("User after login:", user);
 
-  if (success) {
-    setTimeout(() => {
-      navigate("/dashboard");
-    }, 100);
-  }
 };
 
   return (
