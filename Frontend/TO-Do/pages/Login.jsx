@@ -20,7 +20,7 @@ const Login = () => {
     e.preventDefault()
     if (!email || !password) return
     const success = await login(email, password)
-    // if (success) navigate("/dashboard")
+    if (success) navigate("/dashboard")
   }
 
   return (

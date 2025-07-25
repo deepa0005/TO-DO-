@@ -3,6 +3,7 @@ import axios from "axios";
 import toast from "react-hot-toast";
 import Sidebar from "../components/Sidebar";
 import TaskList from "../components/TaskList"; 
+import { useAuth } from "../context/AuthContext";
 const Dashboard = () => {
    const { user, loading: authLoading } = useAuth(); 
   const [tasks, setTasks] = useState([]);
@@ -14,9 +15,9 @@ const Dashboard = () => {
     if (user) fetchTasks();
   }, [user]);
 
-  useEffect(() => {
-    fetchTasks();
-  }, []);
+  // useEffect(() => {
+  //   fetchTasks();
+  // }, []);
 
   useEffect(() => {
     filterTasksByTab();
@@ -45,6 +46,15 @@ const Dashboard = () => {
       setFilteredTasks(tasks); // default fallback
     }
   };
+
+  
+  if (authLoading) {
+    return (
+      <div className="flex justify-center items-center h-screen">
+        <div className="animate-spin h-10 w-10 rounded-full border-4 border-blue-500 border-t-transparent"></div>
+      </div>
+    );
+  }
 
   return (
 <div className="flex min-h-screen bg-gradient-to-br from-blue-80 via-blue-100 to-white dark:from-blue-300 dark:via-blue-400/10 dark:to-blue-900 backdrop-blur-sm font-sans text-gray-800 dark:text-white">
