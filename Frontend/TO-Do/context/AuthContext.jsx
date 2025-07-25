@@ -24,7 +24,9 @@ useEffect(() => {
     if (token) {
       axios.defaults.headers.common["Authorization"] = `Bearer ${token}`;
       try {
-        const res = await axios.get("https://to-do-kkyx.onrender.com/auth/me"); // protected route
+       const res = await axios.get("https://to-do-kkyx.onrender.com/api/auth/me",
+        { withCredentials: true }
+       ); // protected route
         setUser(res.data); // actual verified user
       } catch (err) {
         console.error("Token invalid:", err.response?.data?.message || err.message);
@@ -45,7 +47,11 @@ useEffect(() => {
       const response = await axios.post("https://to-do-kkyx.onrender.com/api/auth/login", {
         email,
         password,
-      });
+      },
+      {
+        withCredentials: true,
+      }
+    );
 
       const { token, user: userData } = response.data;
 
@@ -72,7 +78,9 @@ useEffect(() => {
         name,
         email,
         password,
-      });
+      },
+    { withCredentials: true }
+);
 
       const { token, user: userData } = response.data;
 
