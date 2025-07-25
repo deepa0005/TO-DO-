@@ -27,7 +27,7 @@ const Login = () => {
     <div className="min-h-[calc(100vh-8rem)] flex items-center justify-center">
       <div className="max-w-md w-full space-y-8">
         <div className="text-center">
-          <h2 className="text-3xl font-bold text-gray-900 dark:text-black-700">Sign in to your account</h2>
+          <h2 className="text-3xl font-bold text-gray-900 dark:text-black">Sign in to your account</h2>
           <p className="mt-2 text-sm text-gray-600 dark:text-gray-400">
             Or{" "}
             <Link to="/register" className="font-medium text-blue-600 hover:text-blue-500 dark:text-blue-400">
