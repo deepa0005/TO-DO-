@@ -53,7 +53,7 @@ useEffect(() => {
       }
     );
 
-      const { token, user: userData } = response.data;
+      const { token, ...userData } = response.data;
 
       localStorage.setItem("token", token);
       localStorage.setItem("user", JSON.stringify(userData));
@@ -82,7 +82,7 @@ useEffect(() => {
     { withCredentials: true }
 );
 
-      const { token, user: userData } = response.data;
+     const { token, ...userData } = response.data;
 
       localStorage.setItem("token", token);
       localStorage.setItem("user", JSON.stringify(userData));

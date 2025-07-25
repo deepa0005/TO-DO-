@@ -25,6 +25,11 @@ const handleSubmit = async (e) => {
   console.log("Login success:", success);
   console.log("User after login:", user);
 
+  if (success) {
+  navigate("/dashboard");
+} else {
+    alert("Login failed. Please check your credentials.");
+  }
 };
 
   return (
